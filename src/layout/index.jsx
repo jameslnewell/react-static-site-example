@@ -6,9 +6,9 @@ const Layout = ({scripts, styles, children}) => {
   const files = fs.readFileSync(path.join(__dirname, 'rev-manifest.json')).toString();
   return (
     <html>
-      <html>
+      <head>
         {styles.map(style => <link rel="stylesheet" href={style}/>)}
-      </html>
+      </head>
       <body>
         <div id="app">
           {children}
