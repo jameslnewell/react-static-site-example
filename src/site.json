@@ -1,0 +1,6 @@
+{
+  "layout": "./layout",
+  "pages": [
+    "./pages/Home"
+  ]
+}
