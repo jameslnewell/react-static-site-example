@@ -7,13 +7,14 @@ const Layout = ({scripts, styles, children}) => {
   return (
     <html>
       <html>
-        {styles.map(style => <link rel="stylesheet" href={style}/>)}
+        {styles.map(style => <link key={style} rel="stylesheet" href={style}/>)}
+        {scripts.async.map(script => <link key={script} rel="prefetch" href={script}/>)}
       </html>
       <body>
         <div id="app">
           {children}
         </div>
-        {scripts.map(script => <script src={script} defer/>)}
+        {scripts.entry.map(script => <script key={script} src={script} defer/>)}
       </body>
     </html>
   );

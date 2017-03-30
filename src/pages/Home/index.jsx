@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Home = () => (
-  <h1>Hello Worlds!</h1>
+  <h1>Hello World!</h1>
 );
 
 Home.getProps = () => ({});
@@ -11,9 +11,9 @@ Home.getPath = () => 'index.html';
 if (__CLIENT__) {
   ReactDOM.render(<Home/>, document.getElementById('app'));
 
-  // import('./async')
-  //   .then(module => console.log(module))
-  // ;
+  import('./async')
+    .then(module => console.log(module)) // eslint-disable-line no-console
+  ;
 
 }
 
