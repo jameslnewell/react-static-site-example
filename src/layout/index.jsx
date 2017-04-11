@@ -1,9 +1,7 @@
-import fs from 'fs';
-import path from 'path';
 import React from 'react';
+import serialize from 'serialize-javascript';
 
-const Layout = ({scripts, styles, children}) => {
-  const files = fs.readFileSync(path.join(__dirname, 'rev-manifest.json')).toString();
+const Layout = ({styles, scripts, props, children}) => {
   return (
     <html>
       <head>
@@ -14,6 +12,7 @@ const Layout = ({scripts, styles, children}) => {
         <div id="app">
           {children}
         </div>
+        <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_PROPS__ = ${serialize(props)};`}}/>
         {scripts.entry.map(script => <script key={script} src={script} defer/>)}
       </body>
     </html>
@@ -21,6 +20,9 @@ const Layout = ({scripts, styles, children}) => {
 };
 
 Layout.propTypes = {
+  styles: React.PropTypes.array,
+  scripts: React.PropTypes.object,
+  props: React.PropTypes.object,
   children: React.PropTypes.node
 };
 
