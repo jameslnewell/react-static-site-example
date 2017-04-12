@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as PropTypes from 'prop-types';
 
 const Home = ({name}) => (
   <h1>Hello {name}!</h1>
@@ -8,7 +9,7 @@ const Home = ({name}) => (
 Home.getProps = () => ({name: 'World'});
 Home.getPath = () => 'index.html';
 Home.propTypes = {
-  name: React.PropTypes.string
+  name: PropTypes.string
 };
 
 if (__CLIENT__) {
